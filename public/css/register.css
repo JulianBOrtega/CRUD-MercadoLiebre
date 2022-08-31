@@ -1,0 +1,103 @@
+.register
+{
+
+}
+
+.register__main
+{
+    background-color: var(--c_grisClaro);
+}
+
+.register label
+{
+    font-size: 14px;
+    padding-left: 8px;
+}
+
+.register__main__form
+{
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    width: 70%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px 0px;
+}
+
+.register__main__form__pfp
+{
+    color: white;
+    font-size: 14px;
+    cursor:pointer;
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    background-color: var(--c_celeste);
+    transition:all 200ms ease;
+}
+
+.register__main__form input
+{
+    background-color: white;
+    border:none;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.register__main__form input[type="submit"]
+{
+    background-color: var(--c_celeste);
+    color: white;
+    cursor: pointer;
+    transition:all 200ms ease;
+}
+
+.register__main__form input[type="submit"]:hover, .register__main__form__pfp:hover
+{
+    background-color: #0022AA;
+}
+
+.register__main__form input[type="reset"]
+{
+    cursor: pointer;
+}
+
+.register__main__form__password
+{
+    display: flex;
+    justify-content: space-between;
+}
+
+.register__main__form__password *
+{
+    width: 49%;
+}
+
+.register__main__form__radiolist
+{
+    display:flex;
+    flex-direction: row;
+    padding-left: 10px;
+    gap: 20px;
+}
+
+.register__main__form__checklist
+{
+    padding-left: 10px;
+}
+
+.register__main__form__checklist *
+{
+    padding-bottom: 10px;
+}
+
+@media (min-width: 426px)  /*! Tablet & desktop*/
+{
+
+}
+
+@media (min-width: 769px) /*! Desktop */
+{
+
+}

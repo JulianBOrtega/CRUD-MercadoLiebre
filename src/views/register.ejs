@@ -1,0 +1,98 @@
+<html lang="en">
+    <%- include('partials/head', {title: 'Inicio'}) %>
+<body class="register">
+    <%- include('partials/headerNavbar') %>
+
+    <main class="register__main">
+        <form class="register__main__form" action="/register" method="POST">
+            <h1>Crea tu cuenta</h1>
+            <input type="text" name="fullname" placeholder="Nombre y apellido" minlength="3" maxlength="40" value="<%= locals.old && old.fullname%>">
+            <% if(locals.errors && errors.fullname) { %>
+                <p style="color:red"> <%= errors.fullname.msg %> </p>
+            <% } %>
+
+            <input type="text" name="username" placeholder="Nombre de usuario" minlength="3" maxlength="40" value="<%= locals.old && old.username%>">
+            <% if(locals.errors&& errors.username) { %>
+                <p style="color:red"> <%= errors.username.msg %> </p>
+            <% } %>
+
+            <div class="register__main__form__password">
+                <input type="password" name="password1" placeholder="Contraseña" minlength="5" maxlength="20" value="<%= locals.old && old.password1%>">
+                <input type="password" name="password2" placeholder="Repetir contraseña" minlength="5" maxlength="20" value="<%= locals.old && old.password2%>">
+            </div>
+            <div style="display:flex; gap: 5px;">
+                <% if(locals.errors&& errors.password1) { %>
+                    <p style="color:red"> <%= errors.password1.msg %> </p>
+                <% } %>
+                <% if(locals.errors&& errors.password2) { %>
+                    <p style="color:red"> <%= errors.password2.msg %> </p>
+                <% } %>
+            </div>
+            
+
+            <input type="email" name="email" placeholder="Email" minlength="3" maxlength="40" value="<%= locals.old && old.email%>">
+            <% if(locals.errors&& errors.email) { %>
+                <p style="color:red"> <%= errors.email.msg %> </p>
+            <% } %>
+
+            <input type="file" name="pfp" id="pfp" accept=".jpg, .png, .gif, .jpeg" hidden>
+            <label class="register__main__form__pfp" for="pfp">Sube una imágen de perfil</label>
+
+            <h4>Fecha de nacimiento</h4>
+            <input type="date" name="birthday" value="<%= locals.old && old.birthday%>">
+            <% if(locals.errors&& errors.birthday) { %>
+                <p style="color:red"> <%= errors.birthday.msg %> </p>
+            <% } %>
+
+            <input type="text" name="address" placeholder="Domicilio" maxlength="60" value="<%= locals.old && old.address%>">
+            <% if(locals.errors&& errors.address) { %>
+                <p style="color:red"> <%= errors.address.msg %> </p>
+            <% } %>
+            
+            <h4>Perfil de usuario</h4>
+            <div class="register__main__form__radiolist">
+                <div class="register__main__form__choice">
+                    <input type="radio" name="profile" value="0" id="comprador" <%= (locals.old && +old.profile === 0) && "checked" %>>
+                    <label for="comprador">Comprador</label>
+                </div>
+                <div class="register__main__form__choice">
+                    <input type="radio" name="profile" value="1" id="vendedor" <%= (locals.old && +old.profile === 1) && "checked" %>>
+                    <label for="vendedor">Vendedor</label>
+                </div>
+            </div>
+            <% if(locals.errors&& errors.profile) { %>
+                <p style="color:red"> <%= errors.profile.msg %> </p>
+            <% } %>
+            
+            <h4>Intereses</h4>
+            <div class="register__main__form__checklist">
+                <div class="register__main__form__choice">
+                    <input type="checkbox" name="interests" value="electro" id="electro" <%= (locals.old && old.interests === "electro") && "checked" %>>
+                    <label for="electro">Electro</label>
+                </div>
+                <div class="register__main__form__choice">
+                    <input type="checkbox" name="interests" value="moda" id="moda" <%= (locals.old && old.interests === "moda") && "checked" %>>
+                    <label for="moda">Moda</label>
+                </div>
+                <div class="register__main__form__choice">
+                    <input type="checkbox" name="interests" value="hogar" id="hogar" <%= (locals.old && old.interests === "hogar") && "checked" %>>
+                    <label for="hogar">Hogar</label>
+                </div>
+                <div class="register__main__form__choice">
+                    <input type="checkbox" name="interests" value="jugueteria" id="jugueteria" <%= (locals.old && old.interests === "jugueteria") && "checked" %>>
+                    <label for="jugueteria">Jugueteria</label>
+                </div>
+                <div class="register__main__form__choice">
+                    <input type="checkbox" name="interests" value="vidaSana" id="vidaSana" <%= (locals.old && old.interests === "vidaSana") && "checked" %>>
+                    <label for="vidaSana">Vida sana</label>
+                </div>
+            </div>
+            
+            <input type="submit" value="Enviar">
+            <input type="reset" value="Borrar datos">
+        </form>
+    </main>
+
+    <%- include('partials/footer') %>
+</body>
+</html>
