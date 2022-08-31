@@ -27,6 +27,9 @@ const controller = {
 	//! Create -  Method to store
 	store: (req, res) => {
 		const id = products[products.length - 1].id + 1;
+		let productImg = "default-image.png";
+		req.file && (productImg = req.file.filename);
+
 		const newProduct = {
 			id,
 			name: req.body.name.trim(),
@@ -34,7 +37,7 @@ const controller = {
 			discount: +req.body.discount,
 			category: req.body.category,
 			description: req.body.description.trim(),
-			image: req.file.filename
+			image: productImg
 		}
 		const newProducts = [...products, newProduct];
 
@@ -51,6 +54,9 @@ const controller = {
 	//! Update - Method to update
 	update: (req, res) => {
 		const productIndex = products.findIndex((p) => p.id === +req.params.id);
+		let productImg = "default-image.png";
+		req.file ? productImg = req.file.filename : productImg = products[productIndex].image;
+
 		products[productIndex] = {
 			id: +req.params.id,
 			name: req.body.name.trim(),
@@ -58,7 +64,7 @@ const controller = {
 			discount: +req.body.discount,
 			category: req.body.category,
 			description: req.body.description.trim(),
-			image: req.file.filename
+			image: productImg
 		}
 
 		fs.writeFileSync(productsFilePath, JSON.stringify(products, null, 3), 'utf-8');
